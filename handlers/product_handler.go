@@ -10,6 +10,11 @@ import (
 var products = make(map[int]models.Product)
 var lastID int
 
+// GetProducts devuelve el mapa de productos
+func GetProducts() map[int]models.Product {
+    return products
+}
+
 func CreateProduct(c *gin.Context) {
     var product models.Product
     if err := c.ShouldBindJSON(&product); err != nil {
@@ -79,4 +84,3 @@ func DeleteProduct(c *gin.Context) {
     delete(products, id)
     c.Status(http.StatusNoContent)
 }
-
